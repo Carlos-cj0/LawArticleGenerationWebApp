@@ -71,3 +71,125 @@ input:focus {
     border-color: #F17A5C;
     box-shadow: 0 0 5px rgba(241, 122, 92, 0.5);
 }
+/* Existing CSS */
+
+/* Styles for the tools container */
+.tools-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Styles for individual tool sections */
+.tool-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.tool-section h2 {
+    text-align: center;
+    color: #10162F;
+    margin-bottom: 15px;
+}
+
+/* Styles for the compensation calculator form */
+#calculatorForm label {
+    display: inline-block;
+    width: 180px;
+    text-align: right;
+    margin-right: 10px;
+    margin-bottom: 8px;
+}
+
+#calculatorForm input[type="number"],
+#calculatorForm input[type="checkbox"] {
+    width: calc(100% - 200px);
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#calculatorForm button[type="submit"],
+#generateArticleBtn,
+#calculateBtn {
+    display: block;
+    width: 200px;
+    margin: 15px auto;
+    padding: 10px;
+    background-color: #F17A5C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+#calculatorForm button[type="submit"]:hover,
+#generateArticleBtn:hover,
+#calculateBtn:hover {
+    background-color: #E5644A;
+}
+
+/* Style for the calculation result */
+#result {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #F17A5C;
+}
+
+
+/* Styles for the emergency contact dropdown */
+.emergency-contact-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#emergencyButton {
+    display: block; /* Make it a block-level element like the others */
+    width: 200px; /* Same width as other buttons */
+    margin: 15px auto; /* Center it horizontally with the same margin */
+    padding: 10px 15px;
+    background-color: #dc3545; /* Red color for emergency */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Ensure text is centered within the button */
+    text-decoration: none; /* Remove any potential link styling */
+}
+
+#emergencyButton:hover {
+    background-color: #c82333;
+}
+
+#emergencyDropdown {
+    display: none; /* Initially hidden */
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#emergencyDropdown p {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #333;
+}
