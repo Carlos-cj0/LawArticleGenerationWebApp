@@ -23,4 +23,4 @@ COPY --from=builder /app/target/LawArticleGenerationWebApp-0.0.1-SNAPSHOT.jar ap
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"] 
