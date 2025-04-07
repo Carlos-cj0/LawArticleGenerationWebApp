@@ -1,14 +1,26 @@
-# Use a base image with Java installed
-FROM openjdk:21-jdk-slim
+# Start with a Maven image to build the project
+FROM maven:3.9.4-eclipse-temurin-21 AS builder
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the JAR file to the container
-COPY target/LawArticleGenerationWebApp-0.0.1-SNAPSHOT.jar app.jar
+# Copy the source code
+COPY . .
 
-# Expose the port the app runs on
+# Build the project
+RUN mvn clean package -DskipTests
+
+# Use a smaller image just to run the app
+FROM openjdk:21-jdk-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy the JAR from the build stage
+COPY --from=builder /app/target/LawArticleGenerationWebApp-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose port
 EXPOSE 8080
 
-# Run the app
+# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
