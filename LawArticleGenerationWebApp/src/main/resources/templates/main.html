@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Article & Compensation Tools</title>
+    <link rel="stylesheet" type="text/css" href="/css/main-styles.css">
+</head>
+<body>
+    <div id="tools-container">
+        <h1>Welcome!</h1>
+
+        <div id="generate-article-section">
+            <h2>Generate Law Article</h2>
+            <button id="generateArticleBtn">Generate Law Article</button>
+            </div>
+
+        <div id="calculator-info-section">
+             <h2>About the Compensation Calculator</h2>
+             <button id="toggleInfoBtn">Show Usage Information</button>
+             <div id="calculatorInfo" style="display:none;">
+                <hr> <h3>如何使用此“家务价值计算器”</h3>
+                <p>该工具适用于估算婚姻存续期间内个人贡献的家务劳动价值，本数值基于《民法典》等中国现行法律框架下的离婚或分居案件中的相关规定。请尽可能在阅读以下注意事项后输入较精准数值:</p>
+                <ul>
+                    <li><strong>婚姻存续期:</strong> 输入您期待获得补偿的婚姻存续期限的开始日期和结束日期，可根据您实际贡献家务价值的日期进行调整。</li>
+                    <li><strong>日家务时长平均值：</strong> 输入您主张的婚姻存续期间每日您从事育儿、护理长辈以及一般家务的平均小时数。</li>
+                    <li><strong>当地各类型服务时薪:</strong> 输入您当地从事育儿、护理长辈以及家政的基本时薪。</li>
+                    <li><strong>机会成本:</strong> 此为非必要填写。您可预估自己在婚姻存续期间可能放弃的总收入、职业发展或福利，但鉴于计算成本较高且在诉讼中难以实现，遂不建议填写具体数值。您可输入“0”</li>
+                </ul>
+                <h3>如何理解结果金额</h3>
+                <p>本计算结果是根据您提供的相关数值，并依据公式所得，具体计算公式:</p>
+				<div class="formula-box">
+							                  <p><code>总金额 = 育儿计算结果 + 护理长辈计算结果 + 家政计算结果 + 总机会成本</code></p>
+							              </div>
+                <p><strong>如何正确使用结果金额</strong></p>
+                <ul>
+                    <li><strong>作为协商工具:</strong> 您可将此估算值辅助用于与您的配偶或对方代理人/律师就解除婚姻关系后的财务分配问题的协商当中，并强调此“家务价值计算器”是基于中国现行法律，法律可信度高。</li>
+                    <li><strong>作为法律参考:</strong> 您可将此计算结果当作案件信息提供给你的代理人/律师。</li>
+                    <li><strong>作为价值支撑:</strong> 您可根据此估算结果来衡量自身对家庭的贡献，以提高自身价值获得感。</li>
+                </ul>
+                <p class="important-note">
+                    <strong>免责申明:</strong> 此“家务价值计算器”仅提供估计数值，并非实际可获得补偿金额。法律案件中的实际赔偿取决于多重因素，包括具体法律、管辖、法官的自由裁量权、提供的证据以及个人婚姻具体情况。在获得计算结果后，请务必咨询合格的法律专业人士，以获取针对您的具体情况的建议。
+                </p>
+                <hr> </div>
+        </div>
+        <div id="compensation-calculator-section">
+            <h2>Domestic Labor Compensation Calculator</h2>
+            <button id="calculateBtn">Show/Hide Calculator</button>
+            <div id="calculatorForm" style="display:none;">
+                <form id="compensationForm">
+                    <p><strong>Marriage Duration:</strong></p>
+                    <label for="marriageStartDate">Start Date:</label>
+                    <input type="date" id="marriageStartDate" name="marriageStartDate" required><br>
+                    <label for="marriageEndDate">End Date:</label>
+                    <input type="date" id="marriageEndDate" name="marriageEndDate" required><br>
+
+                    <p><strong>Average Daily Hours Spent On:</strong></p>
+                    <label for="childcareHoursPerDay">Childcare:</label>
+                    <input type="number" id="childcareHoursPerDay" name="childcareHoursPerDay" step="0.1" min="0" required value="0"><br>
+                    <label for="elderlyCareHoursPerDay">Elderly Care:</label>
+                    <input type="number" id="elderlyCareHoursPerDay" name="elderlyCareHoursPerDay" step="0.1" min="0" required value="0"><br>
+                    <label for="housekeepingHoursPerDay">Housekeeping:</label>
+                    <input type="number" id="housekeepingHoursPerDay" name="housekeepingHoursPerDay" step="0.1" min="0" required value="0"><br>
+
+                    <p><strong>Local Hourly Wage (Yuan/hr):</strong></p>
+                    <label for="childcareHourlyWage">Childcare Wage:</label>
+                    <input type="number" id="childcareHourlyWage" name="childcareHourlyWage" step="0.01" min="0" required value="15.0"><br>
+                    <label for="elderlyCareHourlyWage">Elderly Care Wage:</label>
+                    <input type="number" id="elderlyCareHourlyWage" name="elderlyCareHourlyWage" step="0.01" min="0" required value="13.0"><br>
+                    <label for="housekeepingHourlyWage">Housekeeping Wage:</label>
+                    <input type="number" id="housekeepingHourlyWage" name="housekeepingHourlyWage" step="0.01" min="0" required value="12.0"><br>
+
+                    <p><strong>Other Factors:</strong></p>
+                    <label for="opportunityCostTotal">Total Opportunity Cost (Yuan):</label>
+                    <input type="number" id="opportunityCostTotal" name="opportunityCostTotal" step="0.01" min="0" required value="0"><br>
+
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                    <button type="submit">Calculate</button>
+                </form>
+                <p id="result"></p>
+            </div>
+        </div>
+
+          <div id="emergency-contact-section">
+            <button id="emergencyButton">Emergency Contact</button>
+              <div id="emergencyDropdown" style="display:none;"> <p>Local Police Number: <strong>110</strong></p>
+              </div>
+          </div>
+    </div>
+
+     <div id="logout-container">
+          <div id="logout-section" style="text-align: center;">
+              <h2>End Session</h2>
+              <form th:action="@{/logout}" method="post">
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                  <button type="submit">Logout</button>
+              </form>
+          </div>
+     </div>
+
+
+    <script>
+        // Generate Article Button
+        document.getElementById('generateArticleBtn').addEventListener('click', function() {
+            window.open('/api/law/article', '_blank');
+        });
+
+        // Toggle Calculator Form Visibility
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            const form = document.getElementById('calculatorForm');
+            const isHidden = form.style.display === 'none' || form.style.display === '';
+            form.style.display = isHidden ? 'block' : 'none';
+            // Optional: Change button text
+            // this.textContent = isHidden ? 'Hide Calculator' : 'Show Calculator';
+        });
+
+        // ===== START: Toggle Information Section Visibility =====
+        document.getElementById('toggleInfoBtn').addEventListener('click', function() {
+            const infoDiv = document.getElementById('calculatorInfo');
+            const isHidden = infoDiv.style.display === 'none' || infoDiv.style.display === '';
+            infoDiv.style.display = isHidden ? 'block' : 'none';
+            // Change button text based on state
+            this.textContent = isHidden ? 'Hide Usage Information' : 'Show Usage Information';
+        });
+        // ===== END: Toggle Information Section Visibility =====
+
+
+        // Compensation Form Submission (Corrected)
+        document.getElementById('compensationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = 'Calculating...';
+            resultElement.className = ''; // Clear previous error class
+
+            const formData = new FormData(event.target);
+            const jsonData = Object.fromEntries(formData.entries());
+
+            const csrfTokenInput = document.querySelector('input[name="_csrf"]');
+            const csrfToken = csrfTokenInput ? csrfTokenInput.value : null;
+            const csrfHeaderName = 'X-CSRF-TOKEN';
+            const headers = { 'Content-Type': 'application/json' };
+
+            if (csrfToken) {
+                headers[csrfHeaderName] = csrfToken;
+            } else {
+                console.warn('CSRF token missing.');
+                resultElement.textContent = 'Error: CSRF token missing. Cannot submit.';
+                resultElement.className = 'error-message';
+                return;
+            }
+
+            fetch('/api/compensation', {
+                method: 'POST',
+                body: JSON.stringify(jsonData),
+                headers: headers
+            })
+            .then(response => { /* ... existing response handling ... */
+                 if (!response.ok) {
+                    return response.json()
+                       .catch(() => { throw new Error(`HTTP error ${response.status} - ${response.statusText}`) })
+                       .then(errorData => {
+                           throw new Error(` ${response.statusText} - ${errorData.message || errorData.error || 'Server error details missing'}`);
+                       });
+                }
+                return response.json();
+            })
+            .then(data => { /* ... existing data handling ... */
+                 if (data.amount !== undefined) {
+                     const formattedAmount = parseFloat(data.amount).toLocaleString('zh-CN', { style: 'currency', currency: 'CNY' });
+                     resultElement.textContent = "Estimated Compensation: " + formattedAmount;
+                 } else if (data.error) {
+                    resultElement.textContent = "Error: " + data.error;
+                    resultElement.className = 'error-message';
+                 } else {
+                     throw new Error('Unexpected response format from server.');
+                 }
+            })
+            .catch(error => { /* ... existing error handling ... */
+                console.error('Fetch Error:', error);
+                resultElement.textContent = "Error: " + error.message;
+                resultElement.className = 'error-message';
+            });
+        });
+
+        // Emergency Button Logic
+          const emergencyButton = document.getElementById('emergencyButton');
+          const emergencyDropdown = document.getElementById('emergencyDropdown');
+
+          if (emergencyButton && emergencyDropdown) {
+            emergencyButton.addEventListener('click', function() {
+                  emergencyDropdown.style.display = (emergencyDropdown.style.display === 'none' || emergencyDropdown.style.display === '') ? 'block' : 'none';
+              });
+          } else {
+              console.warn('Emergency button or dropdown not found.');
+          }
+
+    </script>
+
+</body>
+</html>

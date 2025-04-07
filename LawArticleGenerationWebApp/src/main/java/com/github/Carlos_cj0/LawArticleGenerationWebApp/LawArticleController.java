@@ -27,7 +27,7 @@ public class LawArticleController {
         }
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_PDF); // Adjust based on your file type
+        headers.setContentType(MediaType.APPLICATION_PDF); // article PDF
         headers.setContentDisposition(
         	    ContentDisposition.inline()
         	        .filename(lawArticleResource.getFilename())

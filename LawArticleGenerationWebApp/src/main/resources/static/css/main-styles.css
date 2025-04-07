@@ -1,0 +1,334 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #10162F;
+    background-image: url('/images/background-image.PNG');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    /* justify-content and align-items to allow scrolling if content overflows */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: flex-start; /* Align to top */
+    align-items: center;
+    min-height: 100vh; /* Use min-height instead of height */
+    margin: 0;
+    padding: 20px 0; /* Add some vertical padding */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+/* Styles for the tools container */
+#tools-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+    /* Removed margin: 20px auto; as body handles centering now */
+    text-align: center; /* Default alignment for direct children like H1 */
+    margin-bottom: 20px; /* Add space before logout container */
+}
+
+/* Styles for individual tool sections */
+/* Apply left alignment generally, specific sections can override */
+#generate-article-section,
+#compensation-calculator-section,
+#calculator-info-section, /* Added new info section */
+#emergency-contact-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left; /* Default text alignment within sections */
+}
+
+/* Center headings within the tool sections */
+#generate-article-section h2,
+#compensation-calculator-section h2,
+#calculator-info-section h2 { /* Added new info section heading */
+    text-align: center;
+    color: #10162F;
+    margin-bottom: 15px;
+}
+
+/* --- Styles specific to Generate Article Section (if any needed later) --- */
+#generateArticleBtn {
+    /* Shared button styles are applied below */
+}
+
+
+/* --- Styles specific to Calculator Info Section --- */
+#calculator-info-section {
+    background-color: #f9f9f9; /* Slightly different background */
+    /* Inherits padding, border, margin etc. from the general section rule */
+}
+
+#toggleInfoBtn {
+    display: block;
+    width: 250px; /* Adjust width as needed */
+    margin: 0 auto 15px auto; /* Center button, add bottom margin */
+    padding: 10px;
+    background-color: #6c757d; /* Different color for info button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+#toggleInfoBtn:hover {
+    background-color: #5a6268;
+}
+
+/* Styling for the content inside the info div */
+#calculatorInfo {
+    margin-top: 15px; /* Space above the content when shown */
+    padding: 0 10px; /* Add some horizontal padding */
+}
+
+#calculatorInfo h3 {
+    color: #10162F;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+#calculatorInfo p,
+#calculatorInfo ul {
+    margin-bottom: 1em; /* Space between paragraphs/lists */
+    line-height: 1.6; /* Improve readability */
+    color: #333; /* Standard text color */
+}
+
+#calculatorInfo ul {
+    list-style: disc; /* Standard bullets */
+    margin-left: 20px; /* Indent list */
+}
+
+#calculatorInfo hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0; /* Space around separators */
+}
+
+#calculatorInfo .important-note strong {
+    color: #dc3545; /* Highlight the disclaimer label */
+}
+
+#calculatorInfo .important-note {
+    font-size: 0.9em;
+    font-style: italic;
+    color: #555; /* Slightly muted color for disclaimer */
+    border-left: 3px solid #dc3545; /* Add a visual cue */
+    padding-left: 10px;
+}
+
+/* --- Styling for the Formula Display --- */
+#calculatorInfo .formula-box {
+    background-color: #e9ecef; /* Light grey background for the box */
+    border: 1px solid #ced4da; /* Subtle border */
+    border-radius: 5px;
+    padding: 15px 20px; /* Padding inside the box */
+    margin: 15px 0; /* Space above and below the box */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for code-like appearance */
+}
+
+/* Style paragraphs within the formula box */
+#calculatorInfo .formula-box p {
+    margin-bottom: 0.75em; /* Spacing between lines */
+    line-height: 1.5;      /* Line height for readability */
+    color: #333;           /* Text color */
+}
+
+/* Style the step headings */
+#calculatorInfo .formula-box strong {
+    color: #10162F; /* Match other heading colors */
+    font-weight: bold;
+}
+
+/* Style the <code> tags representing formula parts/variables */
+#calculatorInfo .formula-box code {
+    font-weight: normal; /* Normal weight for formula parts */
+    color: #0056b3;     /* Blue color for code elements */
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background */
+    padding: 3px 6px;   /* Padding around code elements */
+    border-radius: 3px; /* Rounded corners */
+    border: 1px solid #b8daff; /* Light blue border */
+    white-space: nowrap; /* Prevent code from wrapping unnecessarily */
+}
+
+/* Ensure line breaks work */
+#calculatorInfo .formula-box br {
+    display: block;
+    content: "";
+    margin-top: 10px;
+}
+
+
+/* --- Styles for the Compensation Calculator Form --- */
+#calculatorForm label {
+    display: inline-block; /* Keep inline-block */
+    width: 180px;       /* Keep specific width */
+    text-align: right;  /* Keep right alignment */
+    margin-right: 10px; /* Keep margin */
+    margin-bottom: 8px;  /* Keep specific margin */
+    vertical-align: middle; /* Align label with input vertically */
+}
+
+#calculatorForm p { /* Style the paragraphs for better spacing */
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #333; /* Darker text color for paragraphs */
+    font-weight: bold; /* Make labels like "Marriage Duration:" bold */
+}
+
+#calculatorForm input[type="number"],
+#calculatorForm input[type="date"] /* Apply similar styles to date inputs */
+{
+    width: calc(100% - 200px); /* Adjust width considering label + margin */
+    max-width: 250px; /* Optional: Set a max-width for larger screens */
+    padding: 8px;
+    margin-bottom: 8px; /* Consistent margin */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding/border in width */
+    vertical-align: middle; /* Align input with label vertically */
+    display: inline-block; /* Needed for vertical-align */
+}
+
+/* Make sure inputs take space correctly */
+#calculatorForm br {
+    display: block; /* Ensure line breaks work as expected */
+    margin-bottom: 5px; /* Add space after line breaks if needed */
+}
+
+/* Style for the calculation result */
+#result {
+    margin-top: 20px; /* Increased margin-top */
+    text-align: center;
+    font-weight: bold;
+    color: #F17A5C; /* Existing color */
+    padding: 10px; /* Add some padding */
+    min-height: 1.5em; /* Ensure space even when empty */
+    background-color: #f0f0f0; /* Light background for result area */
+    border-radius: 4px; /* Rounded corners for result area */
+}
+
+/* Style for error messages */
+.error-message {
+   color: red !important; /* Ensure error color overrides default result color */
+   font-weight: bold;
+   /* Inherits text-align, padding, background etc. from #result when applied */
+}
+
+
+/* --- Styles for the Emergency Contact Section --- */
+#emergency-contact-section {
+    /* Inherits padding, border, margin etc. */
+    /* Override text-align for this specific section */
+    text-align: center;
+}
+
+/* Optional: Add heading style if H2 is used here later */
+/*
+#emergency-contact-section h2 {
+    text-align: center;
+    color: #10162F;
+    margin-bottom: 15px;
+}
+*/
+
+#emergencyButton {
+    /* Shared button styles applied below */
+    background-color: #dc3545; /* Specific color for emergency */
+    display: inline-block; /* Override block display from shared styles if needed */
+    width: 200px; /* Specific width */
+    margin: 0 auto 15px auto; /* Center horizontally, add bottom margin */
+    padding: 10px 15px; /* Specific padding */
+}
+
+#emergencyButton:hover {
+    background-color: #c82333; /* Specific hover color */
+}
+
+#emergencyDropdown {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    text-align: center;
+    max-width: 300px; /* Optional: constrain width */
+    margin-left: auto; /* Center block */
+    margin-right: auto; /* Center block */
+}
+
+#emergencyDropdown p {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+/* --- Shared Button Styles (Apply to multiple buttons) --- */
+#calculatorForm button[type="submit"],
+#generateArticleBtn,
+#calculateBtn { /* Add other general buttons here if needed */
+    display: block;
+    width: 200px; /* Default width */
+    margin: 15px auto; /* Center buttons */
+    padding: 10px; /* Default padding */
+    background-color: #F17A5C; /* Default background */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Default hover for shared buttons */
+#calculatorForm button[type="submit"]:hover,
+#generateArticleBtn:hover,
+#calculateBtn:hover {
+    background-color: #E5644A;
+}
+
+/* --- Styles for the Logout Container --- */
+#logout-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    max-width: 90%;
+    margin: 0 auto 20px auto; /* Center horizontally, space at bottom */
+    text-align: center;
+}
+
+#logout-container h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #10162F;
+}
+
+#logout-container button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background-color: #F17A5C; /* Match other primary buttons */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+}
+
+#logout-container button:hover {
+    background-color: #E5644A; /* Match hover */
+}
