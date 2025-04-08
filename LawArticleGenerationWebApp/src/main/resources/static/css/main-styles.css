@@ -129,6 +129,7 @@ body {
     background-color: #e9ecef; /* Light grey background for the box */
     border: 1px solid #ced4da; /* Subtle border */
     border-radius: 5px;
+	overflow-x: auto; /*add horizontal scroll bar if content overflows*/
     padding: 15px 20px; /* Padding inside the box */
     margin: 15px 0; /* Space above and below the box */
     font-family: 'Courier New', Courier, monospace; /* Monospace font for code-like appearance */
